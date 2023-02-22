@@ -79,6 +79,8 @@ public class HotmailTestCases extends TestCase {
 
     public void tearDown() throws Exception {
         driver.quit();
+        rpp.setCaptcha();
+        rpp.clickNext();
     }
 
 }
