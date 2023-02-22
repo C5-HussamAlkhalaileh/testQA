@@ -31,6 +31,23 @@ public class HotmailTestCases extends TestCase {
         driver = new RemoteWebDriver(new URL(SELENIUM_RC_URL), capabillities);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
+    public static void loginResultTest() throws Exception {
+        LoginPage lp = new LoginPage(driver);
+        HomePage hp = new HomePage(driver);
+
+        lp.open();
+        lp.login(USERNAME, PASSWORD, false);
+
+        hp.waitForPage();
+        // verify that home page is visible
+        Assert.assertTrue(hp.isPresent());
+
+        hp.logout();
+        // verify that we are not on home page anymore
+        Assert.assertFalse(hp.isPresent());
+    }
+
+
 
 
     public void tearDown() throws Exception {
