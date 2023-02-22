@@ -69,7 +69,9 @@ public class HotmailTestCases extends TestCase {
         lp.open();
         lp.clickCantAccessYourAccountLink();
         rpp.waitForPage();
-        
+        rpp.setAccountName(USERNAME);
+        rpp.setCaptcha();
+        rpp.clickNext();
         boolean res = rpp.selectSecurityQuestion("answer", "new_password");
         Assert.assertTrue(res);
     }
