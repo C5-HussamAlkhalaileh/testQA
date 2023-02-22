@@ -47,7 +47,19 @@ public class HotmailTestCases extends TestCase {
         Assert.assertFalse(hp.isPresent());
     }
 
+    public static void register() throws Exception {
+        LoginPage lp = new LoginPage(driver);
+        ResetPasswordPage rpp = new ResetPasswordPage(driver);
 
+        lp.open();
+        lp.clickCantAccessYourAccountLink();
+        rpp.waitForPage();
+        rpp.setAccountName(USERNAME);
+        rpp.setCaptcha();
+        rpp.clickNext();
+        boolean res = rpp.selectEmailMeResetLink();
+        Assert.assertTrue(res);
+    }
 
 
     public void tearDown() throws Exception {
