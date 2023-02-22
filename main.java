@@ -62,6 +62,19 @@ public class HotmailTestCases extends TestCase {
     }
 
 
+    public static void resPassword() throws Exception {
+        LoginPage lp = new LoginPage(driver);
+        ResetPasswordPage rpp = new ResetPasswordPage(driver);
+
+        lp.open();
+        lp.clickCantAccessYourAccountLink();
+        rpp.waitForPage();
+        
+        boolean res = rpp.selectSecurityQuestion("answer", "new_password");
+        Assert.assertTrue(res);
+    }
+
+
     public void tearDown() throws Exception {
         driver.quit();
     }
